@@ -11,6 +11,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World");
+            Console.WriteLine($".NET CLR Version: {Environment.Version}");
         }
     }
 }
