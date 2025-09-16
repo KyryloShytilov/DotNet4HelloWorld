@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Versioning;
+using System.Reflection;
 
 namespace HelloWorld
 {
@@ -12,6 +11,13 @@ namespace HelloWorld
         {
             Console.WriteLine("Hello World");
             Console.WriteLine($".NET CLR Version: {Environment.Version}");
+
+            var targetFramework = Assembly.GetExecutingAssembly()
+                .GetCustomAttributes(typeof(TargetFrameworkAttribute), false)
+                .OfType<TargetFrameworkAttribute>()
+                .FirstOrDefault()?.FrameworkName;
+
+            Console.WriteLine($"Target Framework: {targetFramework}");
         }
     }
 }
